@@ -1,0 +1,34 @@
+header {
+    display: flex;
+    justify-content: center;
+}
+.nav-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-menu ul.menu-container{
+
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    gap: 1rem;
+}
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3rem;
+}
+body>main{
+    max-width: 300rem;
+}
+.author-container{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}

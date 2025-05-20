@@ -1,4 +1,4 @@
-package fr.univrouen.rss25SB.controllers;
+package fr.univrouen.rss25SB.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,11 +1,8 @@
-package fr.univrouen.rss25SB.controllers;
+package fr.univrouen.rss25SB.controller;
 
-import fr.univrouen.rss25SB.model.Item;
 import fr.univrouen.rss25SB.model.TestRSS;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
 
 @RestController
 public class PostController {

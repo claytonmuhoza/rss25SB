@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Erreur</title>
+</head>
+<body>
+<h2>Erreur</h2>
+<p><strong>Identifiant :</strong> <span th:text="${id}"></span></p>
+<p><strong>Statut :</strong> <span th:text="${status}"></span></p>
+<p><strong>Description :</strong> <span th:text="${description} ?: 'Erreur inconnue.'"></span></p>
+</body>
+</html>

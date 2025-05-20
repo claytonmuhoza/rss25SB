@@ -1,21 +1,21 @@
-package fr.univrouen.rss25SB.model;
+package fr.univrouen.rss25SB.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
+import jakarta.xml.bind.annotation.*;
 
-@Embeddable
-public class Author {
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "authorType", propOrder = {"name", "email", "uri"})
+public class AuthorDto {
 
-    @Column(length = 255)
+    @XmlElement(required = true)
     private String name;
 
-    @Column(length = 320) // longueur maximale d'une adresse e-mail selon les standards
+    @XmlElement
     private String email;
 
-    @Column(length = 2048) // pour des URL longues
+    @XmlElement
     private String uri;
 
-    // Getters and setters
+    // Getters and Setters
 
     public String getName() {
         return name;
@@ -41,3 +41,4 @@ public class Author {
         this.uri = uri;
     }
 }
+

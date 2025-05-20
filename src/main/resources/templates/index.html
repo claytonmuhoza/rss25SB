@@ -4,37 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-     <header>
-        <nav>
-            <ul>
-                <li>
-                    <a href="/">
-                        Accueil
-                    </a>
-                </li>
-                <li>
-                    <a href="/help">
-                        Aide
-                    </a>
-                </li>
-                <li>
-                    feed
-                </li>
-            </ul>
-        </nav>
-     </header>
-     <section>
-         <div>
-             Autheur: MUHOZA Clayton
-         </div>
-         <div>
-             Version: <span>1.O</span>
-         </div>
-         <div>
-             Version Java: <span>21</span>
-         </div>
-     </section>
+    <main class="main-container">
+        <header>
+            <section>
+                <div>
+                    <img th:src="@{/img/logo-univ-rouen.png}"    width="200" height="120">
+                </div>
+                <nav class="nav-menu">
+                    <ul class="menu-container">
+                        <li>
+                            <a href="/">
+                                Accueil
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/help">
+                                Aide
+                            </a>
+                        </li>
+                        <li>
+                            listes des articles
+                        </li>
+                    </ul>
+                </nav>
+                
+            </section>
+        </header>
+        <section class="main-author-container">
+            <section class="author-container">
+
+                <article>
+                    <div>
+                       MUHOZA Clayton
+                    </div>
+                    <div>
+                        Version: <span>1.O</span>
+                    </div>
+                    <div>
+                        Version Java: <span>21</span>
+                    </div>
+                </article>
+                
+            </section>
+        </section>
+        
+    </main>
+
 </body>
 </html>

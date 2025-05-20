@@ -1,17 +1,21 @@
 package fr.univrouen.rss25SB.model;
 
-import jakarta.xml.bind.annotation.XmlAccessType;
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.XmlAttribute;
-import jakarta.xml.bind.annotation.XmlType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "categoryType")
-class Category {
-    @XmlAttribute(required = true)
+@Embeddable
+public class Category {
+
+    @Column(length = 100)
     private String term;
 
-    public String getTerm() { return term; }
-    public void setTerm(String term) { this.term = term; }
-}
+    // Getters and setters
 
+    public String getTerm() {
+        return term;
+    }
+
+    public void setTerm(String term) {
+        this.term = term;
+    }
+}

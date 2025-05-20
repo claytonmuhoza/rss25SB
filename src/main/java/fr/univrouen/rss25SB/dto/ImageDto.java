@@ -1,24 +1,24 @@
-package fr.univrouen.rss25SB.model;
+package fr.univrouen.rss25SB.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
+import jakarta.xml.bind.annotation.*;
 
-@Embeddable
-public class Image {
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "imageType")
+public class ImageDto {
 
-    @Column(name = "image_type", length = 50)
+    @XmlAttribute(required = true)
     private String type;
 
-    @Column(name = "image_href", length = 2048) // pour les URL
+    @XmlAttribute(required = true)
     private String href;
 
-    @Column(name = "image_alt", length = 512) // texte alternatif potentiellement long
+    @XmlAttribute(required = true)
     private String alt;
 
-    @Column(name = "image_length")
+    @XmlAttribute
     private Integer length;
 
-    // Getters and setters
+    // Getters and Setters
 
     public String getType() {
         return type;
@@ -52,3 +52,4 @@ public class Image {
         this.length = length;
     }
 }
+

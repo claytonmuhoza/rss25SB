@@ -1,4 +1,4 @@
-package fr.univrouen.rss25SB.controllers;
+package fr.univrouen.rss25SB.controller;
 
 import fr.univrouen.rss25SB.model.Feed;
 import fr.univrouen.rss25SB.model.Item;

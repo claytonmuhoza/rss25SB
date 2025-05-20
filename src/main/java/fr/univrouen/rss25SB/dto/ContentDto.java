@@ -1,21 +1,21 @@
-package fr.univrouen.rss25SB.model;
+package fr.univrouen.rss25SB.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embeddable;
+import jakarta.xml.bind.annotation.*;
 
-@Embeddable
-public class Content {
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "contentType")
+public class ContentDto {
 
-    @Column(name = "content_value", columnDefinition = "TEXT") // Peut contenir de longs textes
+    @XmlValue
     private String value;
 
-    @Column(name = "content_type", length = 50)
+    @XmlAttribute(required = true)
     private String type;
 
-    @Column(name = "content_src", length = 2048) // URL potentiellement longue
+    @XmlAttribute
     private String src;
 
-    // Getters and setters
+    // Getters and Setters
 
     public String getValue() {
         return value;
@@ -41,3 +41,4 @@ public class Content {
         this.src = src;
     }
 }
+
