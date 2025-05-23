@@ -1,25 +1,39 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Liste des articles</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
-<h2>Liste des articles</h2>
-<table border="1">
-    <thead>
-    <tr><th>ID</th><th>Date</th><th>GUID</th></tr>
-    </thead>
-    <tbody>
-    <tr th:each="item : ${items}">
-        <td th:text="${item.id}"></td>
-        <td th:text="${item.published != null ? item.published : item.updated}"></td>
-        <td>
-            <a th:href="@{/rss25SB/html/{id}(id=${item.id})}"
-               th:text="${item.guid}"></a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+
+<!-- Header réutilisable -->
+<div th:replace="fragments :: header"></div>
+
+<main class="main-container">
+    <h2 class="page-title">Liste des articles</h2>
+
+    <div class="table-container">
+        <table class="articles-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>GUID</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${items}">
+                <td th:text="${item.id}">1</td>
+                <td th:text="${item.published != null ? item.published : item.updated}">2025-05-20</td>
+                <td>
+                    <a th:href="@{/rss25SB/html/{id}(id=${item.id})}" th:text="${item.guid}">guid</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
 </body>
 </html>

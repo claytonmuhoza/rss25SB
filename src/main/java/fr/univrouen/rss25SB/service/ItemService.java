@@ -41,7 +41,13 @@ public class ItemService {
         return itemRepository.findById(id)
                 .orElseThrow(() -> new Exception("Article avec l'id " + id + " non trouvé."));
     }
-
+    public List<Item> searchByDate(Date from) {
+        return itemRepository.findAll().stream()
+                .filter(item ->
+                        (item.getPublished() != null && !item.getPublished().before(from)) ||
+                                (item.getUpdated() != null && !item.getUpdated().before(from)))
+                .toList();
+    }
     public void deleteById(Long id) throws Exception {
         Item item = getByIdOrThrow(id);
         Feed feed = item.getFeed();
@@ -56,9 +62,6 @@ public class ItemService {
         }
     }
 
-    public List<Item> searchByDate(Date date) {
-        return itemRepository.findByPublishedAfter(date);
-    }
 
     public List<Item> searchByCategory(String category) {
         return itemRepository.findByCategory_Term(category);

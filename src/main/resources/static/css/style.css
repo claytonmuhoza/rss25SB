@@ -1,34 +1,229 @@
-header {
-    display: flex;
-    justify-content: center;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
 }
-.nav-menu{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.nav-menu ul.menu-container{
 
+.site-header {
+    background-color: #003366;
+    color: white;
+    padding: 1rem;
+    text-align: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-container img {
+    height: 100px;
+    margin-bottom: 1rem;
+}
+
+.nav-menu .menu-container {
     list-style: none;
-    gap: 1rem;
-}
-body
-{
+    padding: 0;
+    margin: 1rem 0;
     display: flex;
+    gap: 2rem;
     justify-content: center;
-    align-items: center;
-    margin: 0 3rem;
 }
-body>main{
-    max-width: 300rem;
+
+.nav-menu .menu-container li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
-.author-container{
+
+.nav-menu .menu-container li a:hover {
+    text-decoration: underline;
+}
+
+.app-version {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.main-container {
+    padding: 2rem;
+}
+
+.authors-section {
+    text-align: center;
+}
+
+.author-cards {
     display: flex;
-    flex-direction: row;
-    gap: 3rem;
-    justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.author-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1rem;
+    width: 200px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.github-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-top: 1rem;
+    object-fit: cover;
+}
+/* ===== PAGE AIDE ===== */
+.page-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #003366;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #003366;
+    text-align: center;
+}
+
+.help-section {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.help-section h3 {
+    color: #1c3b5a;
+    margin-bottom: 0.5rem;
+}
+
+.help-section ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+}
+
+.help-section li {
+    margin-bottom: 0.4rem;
+}
+/* ===== TABLEAU D'ARTICLES ===== */
+.table-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fafafa;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.articles-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+.articles-table thead {
+    background-color: #003366;
+    color: white;
+}
+
+.articles-table th,
+.articles-table td {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 0.95rem;
+}
+
+.articles-table tr:hover {
+    background-color: #76a0d4;
+}
+.articles-table thead tr {
+    background-color: #003366;
+}
+.articles-table a {
+    color: #003366;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.articles-table a:hover {
+    text-decoration: underline;
+}
+
+.page-title {
+    text-align: center;
+    color: #003366;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+}
+/* ===== PAGE DETAIL ARTICLE ===== */
+.article-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.article-detail p {
+    margin: 1rem 0 0.5rem 0;
+    font-size: 1rem;
+}
+
+.article-list {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    list-style-type: disc;
+    color: #333;
+}
+
+.article-content {
+    margin-top: 1rem;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-left: 4px solid #003366;
+    font-style: italic;
+    white-space: pre-line;
+}
+
+.page-title {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 2rem;
+}
+/* ===== PAGE ERREUR ===== */
+.error-box {
+    max-width: 600px;
+    margin: 3rem auto;
+    background-color: #fff0f0;
+    border: 1px solid #ffcccc;
+    border-left: 5px solid #cc0000;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.error-title {
+    color: #cc0000;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.error-box p {
+    font-size: 1rem;
+    margin: 0.7rem 0;
 }

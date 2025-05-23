@@ -1,11 +1,79 @@
-<!doctype html>
-<html lang="en">
+<!-- templates/help.html -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
+    <meta charset="UTF-8"/>
+    <title>Aide - Service REST rss25SB</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
-    dee
+
+<div th:replace="fragments :: header"></div>
+
+<main class="main-container">
+    <h1 class="page-title">Service REST - Aide</h1>
+
+    <h2 class="section-title">Opérations disponibles</h2>
+
+    <section class="help-section">
+        <h3>1. Insérer un flux</h3>
+        <ul>
+            <li><strong>URL :</strong> /rss25SB/insert</li>
+            <li><strong>Méthode :</strong> POST</li>
+            <li><strong>Description :</strong> Insère un flux XML rss25SB valide. Rejet si doublon (titre + date).</li>
+            <li><strong>Retour :</strong> retourner le status INSERTED avec l’id du dernier item si la requête réussi ou retourner le status ERROR en cas d'erreur</li>
+        </ul>
+    </section>
+
+    <section class="help-section">
+        <h3>2. Supprimer un article</h3>
+        <ul>
+            <li><strong>URL :</strong> /rss25SB/delete/{id}</li>
+            <li><strong>Méthode :</strong> DELETE</li>
+            <li><strong>Description :</strong> Supprime l’article par id. Supprime aussi le flux si c’était le dernier article.</li>
+            <li><strong>Retour :</strong> retourner le status DELETED si l'article a été supprimé ou le status ERROR en cas d'erreur</li>
+        </ul>
+    </section>
+
+    <section class="help-section">
+        <h3>3. Afficher un article</h3>
+        <ul>
+            <li><strong>URL :</strong> /rss25SB/resume/xml/{id}</li>
+            <li><strong>Méthode :</strong> GET</li>
+            <li><strong>Description :</strong> Retourne un article complet au format XML rss25SB</li>
+            <li><strong>Retour :</strong> Retourner un article au format XML ou retourner le status ERROR en cas d'erreur</li>
+        </ul>
+    </section>
+
+    <section class="help-section">
+        <h3>4. Lister les articles</h3>
+        <ul>
+            <li><strong>URL :</strong> /rss25SB/resume/xml</li>
+            <li><strong>Méthode :</strong> GET</li>
+            <li><strong>Description :</strong> Liste tous les articles en résumé (id, date, guid)</li>
+            <li><strong>Retour :</strong> XML ou &lt;status&gt;NONE</li>
+        </ul>
+    </section>
+
+    <section class="help-section">
+        <h3>5. Rechercher des articles</h3>
+        <ul>
+            <li><strong>URL :</strong> /rss25SB/search?date=YYYY-MM-DD&amp;category=CATEGORIE</li>
+            <li><strong>Méthode :</strong> GET</li>
+            <li><strong>Description :</strong> Recherche des articles par date (>=) ou catégorie</li>
+            <li><strong>Retour :</strong> XML ou &lt;status&gt;NONE ou &lt;status&gt;ERROR</li>
+        </ul>
+    </section>
+
+    <section class="help-section">
+        <h3>6. Aide</h3>
+        <ul>
+            <li><strong>URL :</strong> /rss25SB/help</li>
+            <li><strong>Méthode :</strong> GET</li>
+            <li><strong>Description :</strong> Affiche cette page d’aide HTML.</li>
+        </ul>
+    </section>
+</main>
+
 </body>
 </html>

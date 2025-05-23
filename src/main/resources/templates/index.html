@@ -1,57 +1,28 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Document</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Accueil</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
-    <main class="main-container">
-        <header>
-            <section>
-                <div>
-                    <img th:src="@{/img/logo-univ-rouen.png}"    width="200" height="120">
-                </div>
-                <nav class="nav-menu">
-                    <ul class="menu-container">
-                        <li>
-                            <a href="/">
-                                Accueil
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/help">
-                                Aide
-                            </a>
-                        </li>
-                        <li>
-                            listes des articles
-                        </li>
-                    </ul>
-                </nav>
-                
-            </section>
-        </header>
-        <section class="main-author-container">
-            <section class="author-container">
 
-                <article>
-                    <div>
-                       MUHOZA Clayton
-                    </div>
-                    <div>
-                        Version: <span>1.O</span>
-                    </div>
-                    <div>
-                        Version Java: <span>21</span>
-                    </div>
-                </article>
-                
-            </section>
-        </section>
-        
-    </main>
+<div th:replace="fragments :: header"></div>
+
+<main class="main-container">
+    <section class="authors-section">
+        <h2>Les auteurs</h2>
+        <div class="author-cards">
+            <div class="author-card" th:each="author : ${authors}">
+                <h3 class="author-name" th:text="${author.nom}">Nom</h3>
+                <a th:href="${author.github}" target="_blank">
+                    <img th:src="${author.githubPicture}" alt="GitHub" class="github-avatar" />
+                </a>
+            </div>
+        </div>
+    </section>
+</main>
 
 </body>
 </html>

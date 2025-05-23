@@ -1,26 +1,39 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Détail de l'article</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
-<h2>Détail de l'article</h2>
-<p><strong>ID :</strong> <span th:text="${item.id}"></span></p>
-<p><strong>GUID :</strong> <span th:text="${item.guid}"></span></p>
-<p><strong>Titre :</strong> <span th:text="${item.title}"></span></p>
-<p><strong>Catégories :</strong>
-<ul>
-    <li th:each="cat : ${item.category}" th:text="${cat.term}"></li>
-</ul>
-</p>
-<p><strong>Date de publication :</strong> <span th:text="${item.published}"></span></p>
-<p><strong>Date de mise à jour :</strong> <span th:text="${item.updated}"></span></p>
-<p><strong>Auteurs / Contributeurs :</strong>
-<ul>
-    <li th:each="auth : ${item.authorOrContributor}" th:text="${auth.name}"></li>
-</ul>
-</p>
-<p><strong>Contenu :</strong> <span th:text="${item.content.value}"></span></p>
+
+<div th:replace="fragments :: header"></div>
+
+<main class="main-container">
+    <h2 class="page-title">Détail de l'article</h2>
+
+    <div class="article-detail">
+        <p><strong>GUID :</strong> <a th:href="${item.guid}"><span th:text="${item.guid}">guid</span> </a></p>
+        <p><strong>Titre :</strong> <span th:text="${item.title}">Titre</span></p>
+
+        <p>
+            <strong>Catégories :</strong>
+            <span th:each="cat : ${item.category}" th:text="${cat.term}">Catégorie </span>
+        </p>
+
+        <p th:if="${item.published != null}"><strong>Date de publication :</strong> <span th:text="${item.published}">2025-05-20</span></p>
+        <p th:if="${item.updated != null}"><strong>Date de mise à jour  :</strong> <span th:text="${item.updated}">2025-05-21</span></p>
+
+        <p><strong>Auteurs / Contributeurs :</strong>
+            <span th:each="auth : ${item.authorOrContributor}" th:text="${auth.name}">Auteur</span>
+        </p>
+
+        <p><strong>Contenu :</strong></p>
+        <div class="article-content" th:text="${item.content.value}">
+            Contenu ici
+        </div>
+    </div>
+</main>
+
 </body>
 </html>

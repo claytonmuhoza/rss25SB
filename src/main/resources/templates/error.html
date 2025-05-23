@@ -1,13 +1,29 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Erreur</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
 </head>
 <body>
-<h2>Erreur</h2>
-<p><strong>Identifiant :</strong> <span th:text="${id}"></span></p>
-<p><strong>Statut :</strong> <span th:text="${status}"></span></p>
-<p><strong>Description :</strong> <span th:text="${description} ?: 'Erreur inconnue.'"></span></p>
+
+<div th:replace="fragments :: header"></div>
+
+<main class="main-container">
+    <div class="error-box">
+        <h2 class="error-title">Une erreur est survenue</h2>
+
+        <p th:if="${id != null}"><strong>Identifiant de l'article :</strong> <span th:text="${id}">?</span></p>
+        <p><strong>Statut :</strong> <span th:text="${status}">?</span></p>
+        <p><strong>Description :</strong>
+            <span th:if="${status == 404}" th:text="'La page demandée n’existe pas.'">La page demandée n’existe pas.</span>
+            <span th:if="${status == 500}" th:text="'Erreur interne du serveur.'">Erreur interne du serveur.</span>
+            <span th:if="${status != 404 and status != 500}"
+                  th:text="${description} ?: 'Erreur inconnue.'">Erreur inconnue.</span>
+        </p>
+
+    </div>
+</main>
+
 </body>
 </html>

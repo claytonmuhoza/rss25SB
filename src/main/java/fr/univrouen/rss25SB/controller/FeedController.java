@@ -22,6 +22,8 @@ import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import java.io.InputStream;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 
@@ -133,12 +135,14 @@ public class FeedController {
             if (category != null) {
                 result = itemService.searchByCategory(category);
             } else if (date != null) {
-                Date parsed = Date.from(Instant.parse(date));
-                result = itemService.searchByDate(parsed);
+                // Analyse de la date au format "yyyy-MM-dd"
+                LocalDate localDate = LocalDate.parse(date); // exemple : "2025-05-19"
+                Date fromDate = Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                result = itemService.searchByDate(fromDate);
             } else {
                 return ResponseEntity.badRequest().body(new ResponseDto(null, "ERROR", "Aucun critère"));
             }
-
+            if(result.isEmpty()) return ResponseEntity.ok().body(new ResponseDto(null, "NONE", "Aucun article trouvé"));
             List<ItemDto> dtos = result.stream()
                     .map(ItemMapper::entityToDto)
                     .toList();
