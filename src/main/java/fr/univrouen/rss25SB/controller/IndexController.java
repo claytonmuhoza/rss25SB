@@ -20,7 +20,7 @@ public class IndexController {
     public String getIndex(Model model) {
         List<AuthorDocument> authors = List.of(
                 new AuthorDocument("MUHOZA Clayton", "https://github.com/claytonmuhoza"),
-                new AuthorDocument("Zarraa Rami", "https://github.com/RamiZarraa")
+                new AuthorDocument("Zaraa Rami", "https://github.com/RamiZarraa")
         );
 
         model.addAttribute("authors", authors);
