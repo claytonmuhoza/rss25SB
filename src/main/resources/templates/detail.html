@@ -7,13 +7,14 @@
 </head>
 <body>
 
-<div th:replace="fragments :: header"></div>
+<div th:replace="~{fragments :: header}"></div>
 
 <main class="main-container">
     <h2 class="page-title">Détail de l'article</h2>
 
     <div class="article-detail">
         <p><strong>GUID :</strong> <a th:href="${item.guid}"><span th:text="${item.guid}">guid</span> </a></p>
+        <img th:if="${item.image != null}" th:alt="${item.image.getAlt()}" th:src="${item.image.getHref()}"/>
         <p><strong>Titre :</strong> <span th:text="${item.title}">Titre</span></p>
 
         <p>
@@ -24,9 +25,13 @@
         <p th:if="${item.published != null}"><strong>Date de publication :</strong> <span th:text="${item.published}">2025-05-20</span></p>
         <p th:if="${item.updated != null}"><strong>Date de mise à jour  :</strong> <span th:text="${item.updated}">2025-05-21</span></p>
 
-        <p><strong>Auteurs / Contributeurs :</strong>
-            <span th:each="auth : ${item.authorOrContributor}" th:text="${auth.name}">Auteur</span>
+        <p th:if="${item.authors != null && item.authors.size()>0}"><strong>Auteur :</strong>
+            <span th:each="auth : ${item.authors}" th:text="${auth.name}">Auteur</span>
         </p>
+        <p th:if="${item.contributors != null && item.contributors.size()>0}"><strong>Contributeur :</strong>
+            <span th:each="auth : ${item.contributors}" th:text="${auth.name}">Contributeur</span>
+        </p>
+
 
         <p><strong>Contenu :</strong></p>
         <div class="article-content" th:text="${item.content.value}">

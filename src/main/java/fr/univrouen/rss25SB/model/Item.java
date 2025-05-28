@@ -46,8 +46,12 @@ public class Item {
     private Content content;
 
     @ElementCollection
-    @CollectionTable(name = "item_author", joinColumns = @JoinColumn(name = "item_id"))
-    private List<Author> authorOrContributor;
+    @CollectionTable(name = "item_authors", joinColumns = @JoinColumn(name = "item_id"))
+    private List<Author> authors;
+
+    @ElementCollection
+    @CollectionTable(name = "item_contributors", joinColumns = @JoinColumn(name = "item_id"))
+    private List<Author> contributors;
 
     @ManyToOne
     @JoinColumn(name = "feed_id")
@@ -87,11 +91,11 @@ public class Item {
 
     public void setContent(Content content) { this.content = content; }
 
-    public List<Author> getAuthorOrContributor() { return authorOrContributor; }
+    public List<Author> getAuthors() { return authors; }
+    public void setAuthors(List<Author> authors) { this.authors = authors; }
 
-    public void setAuthorOrContributor(List<Author> authorOrContributor) {
-        this.authorOrContributor = authorOrContributor;
-    }
+    public List<Author> getContributors() { return contributors; }
+    public void setContributors(List<Author> contributors) { this.contributors = contributors; }
 
     public Feed getFeed() { return feed; }
 

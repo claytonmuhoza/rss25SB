@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<div th:replace="fragments :: header"></div>
+<div th:replace="~{fragments :: header}"></div>
 
 <main class="main-container">
     <h1 class="page-title">Service REST - Aide</h1>
@@ -44,29 +44,47 @@
             <li><strong>Retour :</strong> Retourner un article au format XML ou retourner le status ERROR en cas d'erreur</li>
         </ul>
     </section>
+    <section class="help-section">
+        <h3>4. Afficher un article (page html)</h3>
+        <ul>
+            <li><strong>URL :</strong> /rss25SB/html/{id}</li>
+            <li><strong>Méthode :</strong> GET</li>
+            <li><strong>Description :</strong> Retourne un article complet au format XML rss25SB</li>
+            <li><strong>Retour :</strong> Retourner un article au format html ou retourner le status ERROR en cas d'erreur</li>
+        </ul>
+    </section>
 
     <section class="help-section">
-        <h3>4. Lister les articles</h3>
+        <h3>5. Lister les articles</h3>
         <ul>
             <li><strong>URL :</strong> /rss25SB/resume/xml</li>
             <li><strong>Méthode :</strong> GET</li>
-            <li><strong>Description :</strong> Liste tous les articles en résumé (id, date, guid)</li>
-            <li><strong>Retour :</strong> XML ou &lt;status&gt;NONE</li>
+            <li><strong>Description :</strong> Liste tous les items en résumé (id, date, guid)</li>
+            <li><strong>Retour :</strong> XML de la liste des items en résumé</li>
         </ul>
     </section>
-
     <section class="help-section">
-        <h3>5. Rechercher des articles</h3>
+        <h3>6. Lister les articles (page html)</h3>
         <ul>
-            <li><strong>URL :</strong> /rss25SB/search?date=YYYY-MM-DD&amp;category=CATEGORIE</li>
+            <li><strong>URL :</strong> /rss25SB/resume/html</li>
             <li><strong>Méthode :</strong> GET</li>
-            <li><strong>Description :</strong> Recherche des articles par date (>=) ou catégorie</li>
-            <li><strong>Retour :</strong> XML ou &lt;status&gt;NONE ou &lt;status&gt;ERROR</li>
+            <li><strong>Description :</strong> Liste tous les items en résumé (id, date, guid)</li>
+            <li><strong>Retour :</strong> Une page html contenant la liste des items en résumé</li>
         </ul>
     </section>
 
     <section class="help-section">
-        <h3>6. Aide</h3>
+        <h3>7. Rechercher des articles</h3>
+        <ul>
+            <li><strong>URL :</strong> /rss25SB/search?date={YYYY-MM-DD}&amp;category={CATEGORIE}</li>
+            <li><strong>Méthode :</strong> GET</li>
+            <li><strong>Description :</strong> Recherche des articles par date (date postérieure ou égale) ou catégorie</li>
+            <li><strong>Retour :</strong> XML </li>
+        </ul>
+    </section>
+
+    <section class="help-section">
+        <h3>8. Aide</h3>
         <ul>
             <li><strong>URL :</strong> /rss25SB/help</li>
             <li><strong>Méthode :</strong> GET</li>

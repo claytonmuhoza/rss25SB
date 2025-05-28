@@ -5,7 +5,7 @@ import fr.univrouen.rss25SB.model.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+//permet de transformer les données du modèle Item en XML (DTO) qui est envoyé au client ou inversement (XML reçu du client vers le format du modèle)
 public class ItemMapper {
 
     public static Item dtoToEntity(ItemDto dto) {
@@ -19,12 +19,16 @@ public class ItemMapper {
                 .stream()
                 .map(ItemMapper::categoryDtoToEntity)
                 .collect(Collectors.toList()));
-
-        item.setAuthorOrContributor(dto.getAuthorOrContributor()
+        item.setAuthors(dto.getAuthors()
                 .stream()
                 .map(ItemMapper::authorDtoToEntity)
-                .collect(Collectors.toList()));
-
+                .collect(Collectors.toList())
+        );
+        item.setContributors(dto.getContributors()
+                .stream()
+                .map(ItemMapper::authorDtoToEntity)
+                .collect(Collectors.toList())
+        );
         item.setContent(contentDtoToEntity(dto.getContent()));
         item.setImage(imageDtoToEntity(dto.getImage()));
 
@@ -42,12 +46,14 @@ public class ItemMapper {
                 .stream()
                 .map(ItemMapper::categoryEntityToDto)
                 .collect(Collectors.toList()));
-
-        dto.setAuthorOrContributor(entity.getAuthorOrContributor()
+        dto.setAuthors(entity.getAuthors()
                 .stream()
                 .map(ItemMapper::authorEntityToDto)
                 .collect(Collectors.toList()));
-
+        dto.setContributors(entity.getContributors()
+                .stream()
+                .map(ItemMapper::authorEntityToDto)
+                .collect(Collectors.toList()));
         dto.setContent(contentEntityToDto(entity.getContent()));
         dto.setImage(imageEntityToDto(entity.getImage()));
 

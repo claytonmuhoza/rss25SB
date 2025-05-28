@@ -1,12 +1,14 @@
 package fr.univrouen.rss25SB.dto;
 
 import jakarta.xml.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 @XmlRootElement(name = "item", namespace = "http://univ.fr/rss25")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "itemType", propOrder = {
-        "guid", "title", "category", "published", "updated", "image", "content", "authorOrContributor"
+        "guid", "title", "category", "published", "updated", "image", "content", "author", "contributor"
 })
 public class ItemDto {
 
@@ -25,17 +27,17 @@ public class ItemDto {
     @XmlElement(name = "updated")
     private Date updated;
 
+    @XmlElement(name = "image")
     private ImageDto image;
 
     @XmlElement(required = true)
     private ContentDto content;
 
-    @XmlElements({
-            @XmlElement(name = "author", type = AuthorDto.class),
-            @XmlElement(name = "contributor", type = AuthorDto.class)
-    })
-    private List<AuthorDto> authorOrContributor;
+    @XmlElement(name = "author")
+    private List<AuthorDto> author = new ArrayList<>();
 
+    @XmlElement(name = "contributor")
+    private List<AuthorDto> contributor = new ArrayList<>();
     // Getters and Setters
 
     public String getGuid() { return guid; }
@@ -59,6 +61,9 @@ public class ItemDto {
     public ContentDto getContent() { return content; }
     public void setContent(ContentDto content) { this.content = content; }
 
-    public List<AuthorDto> getAuthorOrContributor() { return authorOrContributor; }
-    public void setAuthorOrContributor(List<AuthorDto> authorOrContributor) { this.authorOrContributor = authorOrContributor; }
+    public List<AuthorDto> getAuthors() { return author; }
+    public void setAuthors(List<AuthorDto> authors) { this.author = authors; }
+
+    public List<AuthorDto> getContributors() { return contributor; }
+    public void setContributors(List<AuthorDto> contributors) { this.contributor = contributors; }
 }
